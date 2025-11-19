@@ -1,0 +1,126 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-size: 16px;
+    /*font-family: Helvetica, Arial, sans-serif, -apple-system;*/
+    line-height: 1.6;
+    width: 100%;
+}
+
+.join-us-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+.join-us-background {
+    background-image: url('../images/join-us.webp');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* 背景随页面滚动 */
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.join-us-background:hover {
+    transform: scale(1.12);
+}
+
+.join-us-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.join-us-background:hover .join-us-overlay {
+    /*  注意这里的hover是要改变join-us-overlay的不透明度，记住写法  */
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.join-us-content {
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.join-us-text {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.join-us-subtitle {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #e5e1da;
+    opacity: 0.9;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.join-us-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #fdfcf9;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+.join-us-description {
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.8;
+    margin: 0 auto 35px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.join-us-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.join-us-btn:hover {
+    background-color: white;
+    color: #333;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);;
+    text-decoration: underline;
+}
+
