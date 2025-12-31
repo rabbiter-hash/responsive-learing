@@ -1,0 +1,35 @@
+*,*::after,*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+    line-height: 1.5;
+
+    /* 字体渲染优化 (让字体看起来更细致、像Mac效果) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.page-wrapper {
+    width: 100%;
+    background-color: #eeeeee;
+    border: 1px solid red;
+}
+
+main {
+    height: 2000px;
+    background-color: black;
+}
+

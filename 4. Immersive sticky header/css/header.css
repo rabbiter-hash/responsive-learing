@@ -1,0 +1,205 @@
+
+.site-header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 24px 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.site-header.sticky {
+    /* 修改: 使用指定的背景色 231, 232, 235 */
+    background: rgba(231, 232, 235, 0.95);
+    padding: 24px 0; /* 保持与初始状态相同的padding */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-icon {
+    background: #f1f5f9;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    color: #0f172a;
+    transition: all 0.3s ease;
+}
+
+.site-header.sticky .logo-icon { background: #0f172a; color: white; }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links a:not(.btn-pill) {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:not(.btn-pill):hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sticky状态 (白底上): 深色文字 */
+.site-header.sticky .nav-links a:not(.btn-pill) {
+    color: #475569; /* 深灰色文字 */
+}
+
+/* Sticky状态悬停: 浅灰底 */
+.site-header.sticky .nav-links a:not(.btn-pill):hover {
+    color: #0f172a; /* 黑色文字 */
+    background-color: #f1f5f9; /* 浅灰色背景 */
+}
+
+/* 默认状态: 白底黑字 */
+.btn-pill {
+    background: white;
+    color: #0f172a !important; /* 强制颜色 */
+    padding: 10px 24px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-left: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-pill:hover {
+    background: #e2e8f0;
+}
+
+/* Sticky状态: 蓝底白字 */
+.site-header.sticky .btn-pill {
+    background: #2563EBFF; /* 变成蓝色 #2563eb */
+    color: white !important;
+}
+
+/* Sticky状态按钮悬停: 深蓝色 */
+.site-header.sticky .btn-pill:hover {
+    background: #1d4ed8; /* 更深的蓝色 hover */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.mobile-menu-toggle {
+    display: none; /* Desktop hidden */
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative; /* Essential for z-index to work */
+    z-index: 101;
+}
+
+.mobile-menu-toggle.active {
+    color: white !important; /* Ensure visible on dark overlay */
+}
+
+.site-header.sticky .mobile-menu-toggle {
+    color: #0f172a;
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 20px 0;
+    }
+    .site-header.sticky {
+        padding: 20px 0;
+    }
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px; /* Larger touch target */
+        height: 48px;
+        margin-right: -12px; /* Compensate for extra width to keep alignment */
+    }
+
+    /* 移动端sticky状态下的汉堡菜单图标颜色 */
+    .site-header.sticky .mobile-menu-toggle {
+        color: #0f172a;
+    }
+
+    .nav-links {
+        position: fixed;
+        /* 通过JS动态设置top和height，这里保留默认值作为fallback */
+        top: 88px;
+        left: 0;
+        width: 80%;
+        height: calc(100vh - 88px);
+        background: #020617; /* 纯深色背景，更现代 */
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 60px; /* 增加顶部留白 */
+        align-items: center;
+        gap: 40px; /* 增加间距 */
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; /* 更平滑的 ease-out expo 曲线 */
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 10px 0 40px rgba(0,0,0,0.5); /* 更深的阴影 */
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* -------------------------------------
+       Hamburger Icon Animation
+       ------------------------------------- */
+    .hamburger-box {
+        position: relative;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+    }
+
+    .hamburger-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 24px;
+        height: 2px;
+        background-color: white; /* Default color */
+        border-radius: 4px;
+        transform: translateY(-50%);
+        transition: background-color 0.1s 0.1s ease; /* Wait for lines to collapse */
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: white; /* Default color */
+        border-radius: 4px;
+        transition: transform 0.2s ease, top 0.2s 0.2s ease, bottom 0.2s 0.2s ease;
+    }
+
+    .hamburger-inner::before {
+        top: -8px;
+    }
+
+    .hamburger-inner::after {
+        bottom: -8px;
+    }
+}
