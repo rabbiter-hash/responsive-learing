@@ -1,0 +1,115 @@
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.card-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.12);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px 16px;
+    border-bottom: 1px solid red;
+    position: relative;
+}
+
+.card-header .header-left {
+    font-weight: bold;
+    font-size: 17px;
+    color: #333;
+    padding-left: 12px;
+    position: relative;
+    z-index: 1;
+    /*border: 1px solid red;*/
+}
+
+.card-header .header-left::before {
+    content: '';
+    width: 4px;
+    height: 1.2em;
+    background-color: #1a73e8;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    border-radius: 2px;
+    transition: all 0.6s ease;
+    opacity: 0.6;
+    z-index: 3;
+}
+
+.card-header .header-left:hover::before {
+    /*  伪元素hover一定是
+        el:hover::before这种固定写法
+        而不是 el:hover el::before
+    */
+    background-color: red;
+}
+
+.card-header .header-right {
+    font-size: 14px;
+    color: #1a73e8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-header .header-right:hover {
+    text-decoration: underline;
+    color: #0b5bd3;
+}
+
+/*  内容区域  */
+
+.card-content {
+    /*  这里的100%会产生不可预知的影响（比如超出)，请做border-box*/
+    width: 100%;
+    padding: 10px 16px;
+    /* 如果使用了100%，可以在这里做box-sizing，也可以在开头做 */
+    box-sizing: border-box;
+}
+
+.content-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 1px dashed red;
+}
+
+.content-item:last-child {
+    border-bottom: none;
+}
+
+.content-title {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.content-title:hover {
+    color: #1a73e8;
+}
+
+/* 时间部分 */
+.content-time {
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
